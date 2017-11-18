@@ -3,7 +3,7 @@ package net.griscraft.cyberscroller;
 public class Game {
 	
 	public Game() {
-		System.out.println("The program ran.");
+		System.out.println("THE PROGRAM RAN!");
 		System.out.println("Test 1");
 	}
 	
