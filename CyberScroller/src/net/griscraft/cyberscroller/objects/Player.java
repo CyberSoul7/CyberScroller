@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import net.griscraft.cyberscroller.Game;
+
 public class Player extends GameObject {
 	
 	private boolean left = false, right = false;
 	
-	public Player(int x, int y, ObjectHandler handler) {
-		super(x, y, handler);
+	public Player(int x, int y, float terminalVelocity, ObjectHandler handler) {
+		super(x, y, terminalVelocity, handler);
 	}
 
 	public void tick() {
@@ -23,11 +25,14 @@ public class Player extends GameObject {
 		if (left) velX = -5;
 		else if (!right) velX = 0;
 		
+		velY += Game.gravity;
+		if (velY >= terminalVelocity) velY = terminalVelocity;
+		
 	}
 
 	public void render(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(x, y, 32, 64);
+		g.fillRect((int)x, (int)y, 32, 64);
 	}
 	
 	public void jump() {
@@ -35,7 +40,7 @@ public class Player extends GameObject {
 	}
 
 	public Rectangle getBounds() {
-		return new Rectangle(x, y, 32, 64);
+		return new Rectangle((int)x, (int)y, 32, 64);
 	}
 
 	public boolean isLeft() {

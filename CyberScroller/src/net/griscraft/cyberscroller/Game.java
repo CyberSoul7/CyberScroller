@@ -14,6 +14,7 @@ public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 212029454656049370L;
 	
 	public static final int width = 1000, height = 563;
+	public static final float gravity = 0.5f;
 	
 	private boolean isRunning = false;
 	private Thread thread;
@@ -27,7 +28,7 @@ public class Game extends Canvas implements Runnable {
 		new Window(width, height, "CyberScroller", this);
 		
 		handler = new ObjectHandler();
-		player = new Player(40, 40, handler);
+		player = new Player(40, 40, 5, handler);
 		player.register();
 		
 		this.addKeyListener(new KeyInput(this));

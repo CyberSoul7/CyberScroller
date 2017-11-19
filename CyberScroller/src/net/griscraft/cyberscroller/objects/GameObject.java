@@ -5,14 +5,16 @@ import java.awt.Rectangle;
 
 public abstract class GameObject {
 	
-	protected int x, y;
+	protected float x, y;
 	protected float velX = 0, velY = 0;
 	protected ObjectHandler handler;
+	protected float terminalVelocity;
 	
-	public GameObject(int x, int y, ObjectHandler handler) {
+	public GameObject(int x, int y, float terminalVelocity, ObjectHandler handler) {
 		this.x = x;
 		this.y = y;
 		this.handler = handler;
+		this.terminalVelocity = terminalVelocity;
 	}
 	
 	public abstract void tick();
@@ -31,7 +33,7 @@ public abstract class GameObject {
 		return false;
 	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
@@ -39,7 +41,7 @@ public abstract class GameObject {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
