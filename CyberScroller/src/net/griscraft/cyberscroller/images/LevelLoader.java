@@ -16,9 +16,9 @@ public class LevelLoader {
 		this.handler = handler;
 	}
 	
-	public Player load() {
+	public Player load() throws InvalidLevelException {
 		
-		Player player;
+		Player player = null;
 		
 		int w = level.getWidth();
 		int h = level.getHeight();
@@ -31,10 +31,23 @@ public class LevelLoader {
 				int blue = (pixel) & 0xff;
 				
 				if (red == 255 && green == 0 && blue == 0) {
-					handler.addObject(new Block(xx*32, yy*32));
+					new Block(xx*32, yy*32, 0, handler).register();
 				}
+				if (red == 0 && green == 0 && blue == 0) {
+					if (player != null) {
+						throw new InvalidLevelException("Too many Players!");
+					}
+					player = new Player(xx*32, yy*32, 5, handler);
+				}
+				
 			}
 		}
+		
+		if (player == null) {
+			throw new InvalidLevelException("No player!");
+		}
+		
+		return player;
 		
 	}
 	
