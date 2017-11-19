@@ -10,12 +10,17 @@ public class Player extends GameObject {
 	
 	private boolean left = false, right = false;
 	private boolean jumping = false;
+	private boolean topBlocks = false;
 
 	public Player(int x, int y, float terminalVelocity, ObjectHandler handler) {
 		super(x, y, terminalVelocity, handler);
 	}
 
 	public void tick() {
+		if (jumping && topBlocks) {
+			jump();
+		}
+		
 		x += velX;
 		y += velY;
 		
@@ -38,9 +43,9 @@ public class Player extends GameObject {
 		g.fillRect((int)x, (int)y, 32, 64);
 	}
 	
-	public void collision() {
+	private void collision() {
 		
-		boolean topBlocks = false;
+		topBlocks = false;
 		
 		for (GameObject object : handler.getObjects()) {
 			
@@ -51,26 +56,36 @@ public class Player extends GameObject {
 				Rectangle playerBounds = getBounds();
 				Rectangle blockBounds = object.getBounds();
 				
-				if (playerBounds.y + playerBounds.height > blockBounds.y) {
+				//Touching top of a block
+				if (playerBounds.y + playerBounds.height > blockBounds.y &&
+						playerBounds.x + playerBounds.width > blockBounds.x && blockBounds.x + blockBounds.width > playerBounds.x) {
 					if (!jumping) {
 						y -= velY;
 					}
 					topBlocks = true;
 				}
 				
+				//Touching bottom of a block
+				if (blockBounds.y + blockBounds.height > playerBounds.y &&
+						playerBounds.x + playerBounds.width > blockBounds.x && blockBounds.x + blockBounds.width > playerBounds.x) {
+					velY *= -1;
+				}
+				
+				//Touching left of a block
+				if (blockBounds.x)
+				
 			}
 			
 		}
 		
-		if (!topBlocks) {
+		if (topBlocks) {
 			jumping = false;
 		}
 		
 	}
 	
-	public void jump() {
-		if (jumping) return;
-		velY = -5;
+	private void jump() {
+		velY = -7;
 	}
 
 	public Rectangle getBounds() {
