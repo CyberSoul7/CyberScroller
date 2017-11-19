@@ -1,6 +1,9 @@
 package net.griscraft.cyberscroller;
 
 import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 	
@@ -67,6 +70,24 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void render() {
+		BufferStrategy bs = this.getBufferStrategy();
+		if (bs == null) {
+			this.createBufferStrategy(3);
+			return;
+		}
+		
+		Graphics g = bs.getDrawGraphics();
+		
+		/*Start Drawing*/
+		
+		//Background
+		g.setColor(Color.BLUE);
+		g.fillRect(0, 0, width, height);
+		
+		/*Stop Drawing*/
+		
+		g.dispose();
+		bs.show();
 		
 	}
 	
