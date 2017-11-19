@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import net.griscraft.cyberscroller.objects.ObjectHandler;
+
 public class Game extends Canvas implements Runnable {
 	
 	private static final long serialVersionUID = 212029454656049370L;
@@ -13,11 +15,14 @@ public class Game extends Canvas implements Runnable {
 	
 	private boolean isRunning = false;
 	private Thread thread;
+	private ObjectHandler handler;
 	
 	private int fps;
 	
 	public Game() {
 		new Window(width, height, "CyberScroller", this);
+		
+		handler = new ObjectHandler();
 		
 		start();
 	}
@@ -66,7 +71,7 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void tick() {
-		
+		handler.tick();
 	}
 	
 	private void render() {
@@ -83,6 +88,9 @@ public class Game extends Canvas implements Runnable {
 		//Background
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, width, height);
+		
+		//Objects
+		handler.render(g);
 		
 		/*Stop Drawing*/
 		
