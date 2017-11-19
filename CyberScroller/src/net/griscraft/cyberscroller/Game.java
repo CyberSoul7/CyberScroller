@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 import net.griscraft.cyberscroller.objects.Player;
+import net.griscraft.cyberscroller.playerinput.KeyInput;
 
 public class Game extends Canvas implements Runnable {
 	
@@ -28,6 +29,8 @@ public class Game extends Canvas implements Runnable {
 		handler = new ObjectHandler();
 		player = new Player(40, 40, handler);
 		player.register();
+		
+		this.addKeyListener(new KeyInput(this));
 		
 		start();
 	}
