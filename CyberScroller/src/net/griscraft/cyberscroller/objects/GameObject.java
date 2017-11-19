@@ -7,15 +7,29 @@ public abstract class GameObject {
 	
 	protected int x, y;
 	protected float velX = 0, velY = 0;
+	protected ObjectHandler handler;
 	
-	public GameObject(int x, int y) {
+	public GameObject(int x, int y, ObjectHandler handler) {
 		this.x = x;
 		this.y = y;
+		this.handler = handler;
 	}
 	
 	public abstract void tick();
 	public abstract void render(Graphics g);
 	public abstract Rectangle getBounds();
+	
+	public void register() {
+		handler.addObject(this);
+	}
+	
+	public boolean unregister() {
+		if (handler.objects.contains(this)) {
+			handler.removeObject(this);
+			return true;
+		}
+		return false;
+	}
 
 	public int getX() {
 		return x;
