@@ -4,7 +4,11 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
+import net.griscraft.cyberscroller.images.BufferedImageLoader;
+import net.griscraft.cyberscroller.images.InvalidLevelException;
+import net.griscraft.cyberscroller.images.LevelLoader;
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 import net.griscraft.cyberscroller.objects.Player;
 import net.griscraft.cyberscroller.playerinput.KeyInput;
@@ -19,6 +23,7 @@ public class Game extends Canvas implements Runnable {
 	private boolean isRunning = false;
 	private Thread thread;
 	private ObjectHandler handler;
+	private BufferedImageLoader loader;
 	
 	private Player player;
 	
@@ -28,7 +33,15 @@ public class Game extends Canvas implements Runnable {
 		new Window(width, height, "CyberScroller", this);
 		
 		handler = new ObjectHandler();
-		player = new Player(40, 40, 5, handler);
+		
+		loader = new BufferedImageLoader();
+		BufferedImage level = loader.loadImage("/levels/level1.png");
+		
+		try {
+			player = new LevelLoader(level, handler).load();
+		} catch (InvalidLevelException e) {
+			e.printStackTrace();
+		}
 		player.register();
 		
 		this.addKeyListener(new KeyInput(this));

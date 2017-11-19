@@ -33,7 +33,7 @@ public class LevelLoader {
 				if (red == 255 && green == 0 && blue == 0) {
 					new Block(xx*32, yy*32, 0, handler).register();
 				}
-				if (red == 0 && green == 0 && blue == 0) {
+				if (red == 0 && green == 0 && blue == 255) {
 					if (player != null) {
 						throw new InvalidLevelException("Too many Players!");
 					}
