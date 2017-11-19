@@ -9,7 +9,6 @@ import java.awt.image.BufferedImage;
 import net.griscraft.cyberscroller.images.BufferedImageLoader;
 import net.griscraft.cyberscroller.images.InvalidLevelException;
 import net.griscraft.cyberscroller.images.LevelLoader;
-import net.griscraft.cyberscroller.objects.GameObject;
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 import net.griscraft.cyberscroller.objects.Player;
 import net.griscraft.cyberscroller.playerinput.KeyInput;

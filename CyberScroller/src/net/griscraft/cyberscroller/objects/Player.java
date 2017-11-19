@@ -57,22 +57,32 @@ public class Player extends GameObject {
 				Rectangle blockBounds = object.getBounds();
 				
 				//Touching top of a block
-				if (playerBounds.y + playerBounds.height > blockBounds.y &&
+				if (playerBounds.y + playerBounds.height > blockBounds.y && blockBounds.y + (blockBounds.height / 2) > playerBounds.y + playerBounds.height &&
 						playerBounds.x + playerBounds.width > blockBounds.x && blockBounds.x + blockBounds.width > playerBounds.x) {
 					if (!jumping) {
 						y -= velY;
 					}
 					topBlocks = true;
+					continue;
 				}
 				
 				//Touching bottom of a block
-				if (blockBounds.y + blockBounds.height > playerBounds.y &&
+				if (blockBounds.y + blockBounds.height > playerBounds.y && playerBounds.y > blockBounds.y + (blockBounds.height / 2) &&
 						playerBounds.x + playerBounds.width > blockBounds.x && blockBounds.x + blockBounds.width > playerBounds.x) {
-					velY *= -1;
+					y -= velY;
 				}
 				
 				//Touching left of a block
-				if (blockBounds.x)
+				if (playerBounds.x + playerBounds.width > blockBounds.x && blockBounds.x + (blockBounds.width / 2) > playerBounds.x + playerBounds.width &&
+						playerBounds.y + playerBounds.height > blockBounds.y && blockBounds.y + blockBounds.height > playerBounds.y) {
+					x += velX * -1;
+				}
+				
+				//Touching right of a block
+				if (blockBounds.x + blockBounds.width > playerBounds.x && playerBounds.x > blockBounds.x + (blockBounds.width / 2) &&
+						playerBounds.y + playerBounds.height > blockBounds.y && blockBounds.y + blockBounds.height > playerBounds.y) {
+					x += velX * -1;
+				}
 				
 			}
 			
@@ -85,7 +95,7 @@ public class Player extends GameObject {
 	}
 	
 	private void jump() {
-		velY = -7;
+		velY = -10;
 	}
 
 	public Rectangle getBounds() {
