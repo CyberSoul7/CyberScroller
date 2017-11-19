@@ -22,6 +22,10 @@ public class ObjectHandler {
 		}
 	}
 	
+	public List<GameObject> getObjects() {
+		return objects;
+	}
+	
 	public void addObject(GameObject object) {
 		objects.add(object);
 	}

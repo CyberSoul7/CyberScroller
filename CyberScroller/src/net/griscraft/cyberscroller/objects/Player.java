@@ -18,6 +18,8 @@ public class Player extends GameObject {
 		x += velX;
 		y += velY;
 		
+		collision();
+		
 		//Movement
 		if (right) velX = 5;
 		else if (!left) velX = 0;
@@ -33,6 +35,19 @@ public class Player extends GameObject {
 	public void render(Graphics g) {
 		g.setColor(Color.BLUE);
 		g.fillRect((int)x, (int)y, 32, 64);
+	}
+	
+	public void collision() {
+		
+		for (GameObject object : handler.getObjects()) {
+			if (!getBounds().intersects(object.getBounds())) continue;
+			
+			if (object instanceof Block) {
+				y += velY * -1;
+			}
+			
+		}
+		
 	}
 	
 	public void jump() {
