@@ -29,6 +29,9 @@ public class KeyInput extends KeyAdapter {
 		case KeyEvent.VK_D:
 			player.setRight(true);
 			break;
+		case KeyEvent.VK_R:
+			game.reloadLevel();
+			break;
 		}
 		
 	}

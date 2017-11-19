@@ -34,4 +34,8 @@ public class ObjectHandler {
 		objects.remove(object);
 	}
 	
+	public void clearAll() {
+		objects.clear();
+	}
+	
 }
