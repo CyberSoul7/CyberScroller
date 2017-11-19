@@ -9,7 +9,8 @@ import net.griscraft.cyberscroller.Game;
 public class Player extends GameObject {
 	
 	private boolean left = false, right = false;
-	
+	private boolean jumping = false;
+
 	public Player(int x, int y, float terminalVelocity, ObjectHandler handler) {
 		super(x, y, terminalVelocity, handler);
 	}
@@ -39,19 +40,37 @@ public class Player extends GameObject {
 	
 	public void collision() {
 		
+		boolean topBlocks = false;
+		
 		for (GameObject object : handler.getObjects()) {
+			
 			if (!getBounds().intersects(object.getBounds())) continue;
 			
 			if (object instanceof Block) {
-				y += velY * -1;
+				
+				Rectangle playerBounds = getBounds();
+				Rectangle blockBounds = object.getBounds();
+				
+				if (playerBounds.y + playerBounds.height > blockBounds.y) {
+					if (!jumping) {
+						y -= velY;
+					}
+					topBlocks = true;
+				}
+				
 			}
 			
+		}
+		
+		if (!topBlocks) {
+			jumping = false;
 		}
 		
 	}
 	
 	public void jump() {
-		
+		if (jumping) return;
+		velY = -5;
 	}
 
 	public Rectangle getBounds() {
@@ -72,6 +91,14 @@ public class Player extends GameObject {
 
 	public void setRight(boolean right) {
 		this.right = right;
+	}
+	
+	public boolean isJumping() {
+		return jumping;
+	}
+
+	public void setJumping(boolean jumping) {
+		this.jumping = jumping;
 	}
 
 }

@@ -37,7 +37,7 @@ public class LevelLoader {
 					if (player != null) {
 						throw new InvalidLevelException("Too many Players!");
 					}
-					player = new Player(xx*32, yy*32, 5, handler);
+					player = new Player(xx*32, yy*32 - 10, 5, handler);
 				}
 				
 			}

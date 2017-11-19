@@ -21,6 +21,7 @@ public class KeyInput extends KeyAdapter {
 		
 		switch (key) {
 		case KeyEvent.VK_W:
+			player.setJumping(true);
 			player.jump();
 			break;
 		case KeyEvent.VK_A:
