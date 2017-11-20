@@ -2,7 +2,7 @@ package net.griscraft.cyberscroller.images;
 
 import java.awt.image.BufferedImage;
 
-import net.griscraft.cyberscroller.objects.Block;
+import net.griscraft.cyberscroller.objects.FloorBlock;
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 import net.griscraft.cyberscroller.objects.Player;
 
@@ -31,7 +31,7 @@ public class LevelLoader {
 				int blue = (pixel) & 0xff;
 				
 				if (red == 255 && green == 0 && blue == 0) {
-					new Block(xx*32, yy*32, 0, handler).register();
+					new FloorBlock(xx*32, yy*32, 0, handler).register();
 				}
 				if (red == 0 && green == 0 && blue == 255) {
 					if (player != null) {
