@@ -36,7 +36,9 @@ public class ObjectHandler {
 	}
 	
 	public void clearAll() {
-		objects.clear();
+		for (int i = 0; i < objects.size(); i++) {
+			objects.remove(i);
+		}
 	}
 	
 }

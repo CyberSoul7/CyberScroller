@@ -132,8 +132,8 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	public void reloadLevel() {
+		player.unregister();
 		handler.clearAll();
-		player = null;
 		
 		BufferedImage level = loader.loadImage("/levels/level1.png");
 		
