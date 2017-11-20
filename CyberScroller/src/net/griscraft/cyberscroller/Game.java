@@ -41,7 +41,7 @@ public class Game extends Canvas implements Runnable {
 		BufferedImage level = loader.loadImage("/levels/level1.png");
 		
 		try {
-			player = new LevelLoader(level, handler).load();
+			player = new LevelLoader(level, this).load();
 		} catch (InvalidLevelException e) {
 			e.printStackTrace();
 		}
@@ -138,7 +138,7 @@ public class Game extends Canvas implements Runnable {
 		BufferedImage level = loader.loadImage("/levels/level1.png");
 		
 		try {
-			player = new LevelLoader(level, handler).load();
+			player = new LevelLoader(level, this).load();
 		} catch (InvalidLevelException e) {
 			e.printStackTrace();
 		}
@@ -149,6 +149,10 @@ public class Game extends Canvas implements Runnable {
 		return player;
 	}
 	
+	public ObjectHandler getHandler() {
+		return handler;
+	}
+
 	public static void main(String[] args) {
 		new Game();
 	}

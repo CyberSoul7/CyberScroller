@@ -7,6 +7,7 @@ public abstract class Enemy extends GameObject {
 	
 	protected AI ai;
 	protected int health;
+	protected boolean isMoving = false;
 	
 	public Enemy(int x, int y, float terminalVelocity, ObjectHandler handler, AI ai) {
 		super(x, y, terminalVelocity, handler, true);
@@ -33,6 +34,18 @@ public abstract class Enemy extends GameObject {
 	
 	public void takeDamage(int damageAmount) {
 		health -= damageAmount;
+	}
+
+	public boolean isMoving() {
+		return isMoving;
+	}
+
+	public void setMoving(boolean isMoving) {
+		this.isMoving = isMoving;
+	}
+	
+	public ObjectHandler getHandler() {
+		return handler;
 	}
 	
 }
