@@ -23,6 +23,8 @@ public class TestEnemy extends Enemy {
 		return new Rectangle((int)x+5, (int)y+5, 22, 22);
 	}
 	
-	
+	public Rectangle getFullBounds() {
+		return new Rectangle((int)x, (int)y, 32, 32);
+	}
 	
 }

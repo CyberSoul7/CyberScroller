@@ -1,5 +1,7 @@
 package net.griscraft.cyberscroller.objects.enemies;
 
+import java.awt.Rectangle;
+
 import net.griscraft.cyberscroller.objects.GameObject;
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 
@@ -31,6 +33,8 @@ public abstract class Enemy extends GameObject {
 	public void tick() {
 		ai.tick(this);
 	}
+	
+	protected abstract Rectangle getFullBounds();
 	
 	public void takeDamage(int damageAmount) {
 		health -= damageAmount;

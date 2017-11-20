@@ -50,7 +50,7 @@ public class WalkingAI extends AI {
 			
 			if (object instanceof Block) {
 				
-				Rectangle enemyBounds = enemy.getBounds();
+				Rectangle enemyBounds = enemy.getFullBounds();
 				Rectangle blockBounds = object.getBounds();
 				
 				//Touching top of a block
