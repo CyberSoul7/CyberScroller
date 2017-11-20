@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import net.griscraft.cyberscroller.objects.blocks.Block;
+import net.griscraft.cyberscroller.objects.blocks.FloatingFloorBlock;
+
 public class Player extends GameObject {
 	
 	private boolean left = false, right = false;
@@ -60,6 +63,9 @@ public class Player extends GameObject {
 					topBlocks = true;
 					continue;
 				}
+				
+				//Don't rest of collision tests if it is a FloatingFloorBlock
+				if (object instanceof FloatingFloorBlock) continue;
 				
 				//Touching bottom of a block
 				if (blockBounds.y + blockBounds.height > playerBounds.y && playerBounds.y > blockBounds.y + (blockBounds.height / 2) &&

@@ -2,9 +2,8 @@ package net.griscraft.cyberscroller.images;
 
 import java.awt.image.BufferedImage;
 
-import net.griscraft.cyberscroller.objects.Block;
-import net.griscraft.cyberscroller.objects.ObjectHandler;
-import net.griscraft.cyberscroller.objects.Player;
+import net.griscraft.cyberscroller.objects.*;
+import net.griscraft.cyberscroller.objects.blocks.*;
 
 public class LevelLoader {
 	
@@ -30,8 +29,16 @@ public class LevelLoader {
 				int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
 				
-				if (red == 255 && green == 0 && blue == 0) {
-					new Block(xx*32, yy*32, 0, handler).register();
+				if (red == 255 && blue == 0) {
+					switch (green) {
+					case 40:
+						new FloatingFloorBlock(xx*32, yy*32, 0, handler).register();
+						break;
+					default:
+						new FloorBlock(xx*32, yy*32, 0, handler).register();
+						break;
+					}
+					
 				}
 				if (red == 0 && green == 0 && blue == 255) {
 					if (player != null) {
