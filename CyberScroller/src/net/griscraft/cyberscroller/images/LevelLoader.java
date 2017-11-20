@@ -2,9 +2,9 @@ package net.griscraft.cyberscroller.images;
 
 import java.awt.image.BufferedImage;
 
-import net.griscraft.cyberscroller.objects.FloorBlock;
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 import net.griscraft.cyberscroller.objects.Player;
+import net.griscraft.cyberscroller.objects.blocks.FloorBlock;
 
 public class LevelLoader {
 	

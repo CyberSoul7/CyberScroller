@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import net.griscraft.cyberscroller.objects.blocks.Block;
+
 public class Player extends GameObject {
 	
 	private boolean left = false, right = false;

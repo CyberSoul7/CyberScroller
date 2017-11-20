@@ -1,4 +1,6 @@
-package net.griscraft.cyberscroller.objects;
+package net.griscraft.cyberscroller.objects.blocks;
+
+import net.griscraft.cyberscroller.objects.ObjectHandler;
 
 public class FloorBlock extends Block {
 

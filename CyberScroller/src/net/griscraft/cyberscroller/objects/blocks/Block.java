@@ -1,8 +1,11 @@
-package net.griscraft.cyberscroller.objects;
+package net.griscraft.cyberscroller.objects.blocks;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import net.griscraft.cyberscroller.objects.GameObject;
+import net.griscraft.cyberscroller.objects.ObjectHandler;
 
 public abstract class Block extends GameObject {
 
