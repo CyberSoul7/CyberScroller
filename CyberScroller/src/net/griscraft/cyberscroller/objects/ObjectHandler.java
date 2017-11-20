@@ -12,6 +12,7 @@ public class ObjectHandler {
 		for (int i = 0; i < objects.size(); i++) {
 			GameObject object = objects.get(i);
 			object.tick();
+			if (object.isGravityAffected()) object.applyGravity();
 		}
 	}
 	

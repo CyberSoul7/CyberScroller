@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import net.griscraft.cyberscroller.Game;
-
 public class Player extends GameObject {
 	
 	private boolean left = false, right = false;
@@ -13,7 +11,7 @@ public class Player extends GameObject {
 	private boolean topBlocks = false;
 
 	public Player(int x, int y, float terminalVelocity, ObjectHandler handler) {
-		super(x, y, terminalVelocity, handler);
+		super(x, y, terminalVelocity, handler, true);
 	}
 
 	public void tick() {
@@ -32,9 +30,6 @@ public class Player extends GameObject {
 		
 		if (left) velX = -5;
 		else if (!right) velX = 0;
-		
-		velY += Game.gravity;
-		if (velY >= terminalVelocity) velY = terminalVelocity;
 		
 	}
 

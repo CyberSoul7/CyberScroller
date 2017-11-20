@@ -7,11 +7,12 @@ import java.awt.Rectangle;
 public class Block extends GameObject {
 
 	public Block(int x, int y, float terminalVelocity, ObjectHandler handler) {
-		super(x, y, terminalVelocity, handler);
+		super(x, y, terminalVelocity, handler, false);
 	}
 
 	public void tick() {
-		
+		x += velX;
+		y += velY;
 	}
 
 	public void render(Graphics g) {
