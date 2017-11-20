@@ -3,6 +3,7 @@ package net.griscraft.cyberscroller;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
@@ -24,6 +25,7 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private ObjectHandler handler;
 	private BufferedImageLoader loader;
+	private Camera camera;
 	
 	private Player player;
 	
@@ -33,6 +35,7 @@ public class Game extends Canvas implements Runnable {
 		new Window(width, height, "CyberScroller", this);
 		
 		handler = new ObjectHandler();
+		camera = new Camera(0, 0);
 		
 		loader = new BufferedImageLoader();
 		BufferedImage level = loader.loadImage("/levels/level1.png");
@@ -94,6 +97,7 @@ public class Game extends Canvas implements Runnable {
 	
 	private void tick() {
 		handler.tick();
+		camera.tick(player);
 	}
 	
 	private void render() {
@@ -104,6 +108,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		Graphics g = bs.getDrawGraphics();
+		Graphics2D g2d = (Graphics2D) g;
 		
 		/*Start Drawing*/
 		
@@ -111,8 +116,13 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.RED);
 		g.fillRect(0, 0, width, height);
 		
+		g2d.translate(-camera.getX(), -camera.getY());
+		/*Start Translating to Camera*/
+		
 		//Objects
 		handler.render(g);
+		
+		/*Stop Translating to Camera*/
 		
 		/*Stop Drawing*/
 		
