@@ -12,10 +12,18 @@ public class WalkingAI extends AI {
 	private short jumpHeight;
 	private AttackStyle attack;
 	
-	public WalkingAI(int i, int j, AttackStyle attack) {
-		super(i, j);
+	public WalkingAI(int speed, int health, AttackStyle attack) {
+		super(speed, health);
 		this.attack = attack;
 	}
+	
+	public void tick(Enemy enemy) {
+		
+		
+		
+	}
+	
+	
 
 	public short getJumpHeight() {
 		return jumpHeight;

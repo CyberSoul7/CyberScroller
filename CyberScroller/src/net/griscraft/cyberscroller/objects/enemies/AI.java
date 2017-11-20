@@ -2,28 +2,14 @@ package net.griscraft.cyberscroller.objects.enemies;
 
 public abstract class AI {
 	
-	protected int health;
-	protected int speed;
+	protected final int health;
+	protected final int speed;
 	
-	public AI(int i, int j) {
-		this.health = i;
-		this.speed = j;
-	}
-
-	public int getHealth() {
-		return health;
-	}
-
-	public void setHealth(int health) {
+	public AI(int health, int speed) {
 		this.health = health;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
+	
+	public abstract void tick(Enemy enemy);
 	
 }

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import net.griscraft.cyberscroller.objects.Block;
 import net.griscraft.cyberscroller.objects.ObjectHandler;
 import net.griscraft.cyberscroller.objects.Player;
+import net.griscraft.cyberscroller.objects.enemies.TestEnemy;
 
 public class LevelLoader {
 	
@@ -38,6 +39,9 @@ public class LevelLoader {
 						throw new InvalidLevelException("Too many Players!");
 					}
 					player = new Player(xx*32, yy*32 - 10, 5, handler);
+				}
+				if (red == 0 && green == 255 && blue == 0) {
+					new TestEnemy(xx*32, yy*32, 5, handler).register();
 				}
 				
 			}
