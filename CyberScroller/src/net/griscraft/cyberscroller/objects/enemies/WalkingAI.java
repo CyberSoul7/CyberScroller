@@ -54,7 +54,7 @@ public class WalkingAI extends AI {
 				Rectangle blockBounds = object.getBounds();
 				
 				//Touching top of a block
-				if (enemyBounds.y + enemyBounds.height + 5 > blockBounds.y && blockBounds.y + (blockBounds.height / 2) > enemyBounds.y + enemyBounds.height + 5 &&
+				if (enemyBounds.y + enemyBounds.height > blockBounds.y && blockBounds.y + (blockBounds.height / 2) > enemyBounds.y + enemyBounds.height &&
 						enemyBounds.x + enemyBounds.width > blockBounds.x && blockBounds.x + blockBounds.width > enemyBounds.x) {
 					if (!jumping) {
 						enemy.setY((int) enemy.getY() - (int) enemy.getVelY());
@@ -83,6 +83,10 @@ public class WalkingAI extends AI {
 			jumping = false;
 		}
 		
+	}
+	
+	public void jump(Enemy enemy) {
+		enemy.setVelY(jumpHeight * 5);
 	}
 
 	public int getJumpHeight() {
